@@ -11,7 +11,7 @@ param sku string = 'F1'
 param workerSize string = '0'
 
 @description('The URL for the GitHub repository that contains the project to deploy.')
-param repoURL string = 'https://github.com/nsmaassel/Overdose-Prevention-Solution-Accelerator.git'
+param repoURL string = 'https://github.com/nsmaassel/AzureDeployFrontendBackend.git'
 
 @description('The branch of the GitHub repository to use.')
 param branch string = 'main'
@@ -56,7 +56,7 @@ resource siteName_config 'Microsoft.Web/sites/config@2021-03-01' = {
   parent: siteName_resource
   name: 'appsettings'
   properties: {
-    PROJECT: 'OverdoseAcceleratorWeb\\OverdoseAcceleratorWeb.csproj'
+    PROJECT: 'dotnet_frontend\\dotnet_frontend.sln'
     clientUrl: 'http://${siteName}.azurewebsites.net'
     netFrameworkVersion: 'v6.0'
   }

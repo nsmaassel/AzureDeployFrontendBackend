@@ -94,3 +94,13 @@ resource applicationInsights 'Microsoft.Insights/components@2020-02-02' = {
     Request_Source: 'rest'
   }
 }
+
+resource siteName_config 'Microsoft.Web/sites/config@2021-03-01' = {
+  parent: functionApp
+  name: 'appsettings'
+  properties: {
+    PROJECT: 'dotnet_frontend\\dotnet_frontend.sln'
+    clientUrl: 'http://${functionAppName}.azurewebsites.net/api'
+    netFrameworkVersion: 'v6.0'
+  }
+}
