@@ -2,18 +2,17 @@
 
 targetScope = 'subscription'
 
-@minLength(3)
-@maxLength(11)
-param namePrefix string = ''
-
-var resourceGroupName = 'OOA-${namePrefix}rg'
+var resourceGroupName = 'Nick-OOA-rg'
 
 resource ooaRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
   name: resourceGroupName
 }
 
+@description('The name of your Web Site.')
+var siteName = 'ooa-${uniqueString(ooaRG.id)}'
+
 module frontendApp 'dotnetApp.bicep' = {
-  name: 'ooa-frontend'
+  name: '${siteName}-frontend'
   scope: ooaRG
   params: {
       location: ooaRG.location
@@ -21,7 +20,7 @@ module frontendApp 'dotnetApp.bicep' = {
 }
 
 module functionApp 'functionApp.bicep' = {
-  name: 'ooa-functionApp'
+  name: '${siteName}-functionApp'
   scope: ooaRG
   params: {
     location: ooaRG.location

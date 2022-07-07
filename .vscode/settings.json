@@ -3,5 +3,7 @@
     "azureFunctions.projectLanguage": "C#",
     "azureFunctions.projectRuntime": "~4",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "publish (functions)"
+    "azureFunctions.preDeployTask": "publish (functions)",
+    "appService.defaultWebAppToDeploy": "/subscriptions/0b85251e-3244-4f4d-9540-9b5ae5527096/microsoft.web/sites/subscriptions/0b85251e-3244-4f4d-9540-9b5ae5527096/resourceGroups/Nick-OOA-rg/providers/Microsoft.Web/sites/OOA-wwbc6cqehg2hi",
+    "appService.deploySubpath": "dotnet_frontend"
 }

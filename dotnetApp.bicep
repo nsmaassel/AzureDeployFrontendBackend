@@ -56,7 +56,7 @@ resource siteName_config 'Microsoft.Web/sites/config@2021-03-01' = {
   parent: siteName_resource
   name: 'appsettings'
   properties: {
-    PROJECT: 'dotnet_frontend\\dotnet_frontend.sln'
+    PROJECT: 'dotnet_frontend\\dotnet_frontend.csproj'
     clientUrl: 'http://${siteName}.azurewebsites.net'
     netFrameworkVersion: 'v6.0'
   }
