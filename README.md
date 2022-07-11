@@ -5,20 +5,19 @@ https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/quickstart-c
 
 ## ARM template deployment
 Create resource group
-az group create --name "Nick-OOA-rg" --location "westus"
+az group create --name "Nick-sandbox-rg" --location "westus"
 
 Create deployment group and deploy via ARM template
 <!-- Resource Group deploy -->
-`az deployment group create --name "NickOOADeployment" --resource-group "Nick-OOA-rg" --template-file "./main.bicep"`
-az deployment sub create --name "NickOOADeployment" --resource-group "Nick-OOA-rg" --template-file "./main.bicep"
+az deployment sub create --name "NickSandboxDeployment" --resource-group "Nick-sandbox-rg" --template-file "./main.bicep"
 
 <!-- Subscription deploy -->
 <!--    Deploy everything at once -->
-az deployment sub create --name "NickOOADeployment" --location "westus" --template-file "./main.bicep"
+az deployment sub create --name "NickSandboxDeployment" --location "westus" --template-file "./main.bicep"
 <!--    Deploy just the frontend -->
-az deployment group create --name "NickOOAFrontendDeployment" --resource-group Nick-OOA-rg --template-file "./dotnetApp.bicep"
+az deployment group create --name "NickFrontendDeployment" --resource-group Nick-sandbox-rg --template-file "./dotnetApp.bicep"
 <!--    Deploy just the backend/function app -->
-az deployment group create --name "NickOOAFunctionAppDeployment" --resource-group Nick-OOA-rg --template-file "./functionApp.bicep"
+az deployment group create --name "NickFunctionAppDeployment" --resource-group Nick-sandbox-rg --template-file "./functionApp.bicep"
 <!-- How to pass parameters to a bicep file: -->
   <!-- --parameters storageAccountType=Standard_GRS -->
 

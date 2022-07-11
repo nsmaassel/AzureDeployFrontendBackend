@@ -2,7 +2,7 @@
 
 targetScope = 'subscription'
 
-var resourceGroupName = 'Nick-OOA-rg'
+var resourceGroupName = 'Nick-sandbox-rg'
 
 resource ooaRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
   name: resourceGroupName
