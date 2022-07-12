@@ -2,28 +2,33 @@
 
 targetScope = 'subscription'
 
-var resourceGroupName = 'Nick-sandbox-rg'
+@description('Name for the resource group.')
+param resourceGroupName string = 'Nick-sandbox-rg'
 
-resource ooaRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
+@description('Location for all resources.')
+param resourceGroupLocation string = 'westus'
+
+resource armAppRG 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: resourceGroupName
+  location: resourceGroupLocation
 }
 
 @description('The name of your Web Site.')
-var siteName = 'ooa-${uniqueString(ooaRG.id)}'
+var siteName = 'armApp-${uniqueString(armAppRG.id)}'
 
 module frontendApp 'dotnetApp.bicep' = {
   name: '${siteName}-frontend'
-  scope: ooaRG
-  params: {
-      location: ooaRG.location
-  }
+  scope: armAppRG
+  // params: {
+      // location: armAppRG.location
+  // }
 }
 
 module functionApp 'functionApp.bicep' = {
   name: '${siteName}-functionApp'
-  scope: ooaRG
-  params: {
-    location: ooaRG.location
-    appInsightsLocation: ooaRG.location
-  }
+  scope: armAppRG
+  // params: {
+    // location: armAppRG.location
+    // appInsightsLocation: armAppRG.location
+  // }
 }

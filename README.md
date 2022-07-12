@@ -9,7 +9,7 @@ az group create --name "Nick-sandbox-rg" --location "westus"
 
 Create deployment group and deploy via ARM template
 <!-- Resource Group deploy -->
-az deployment sub create --name "NickSandboxDeployment" --resource-group "Nick-sandbox-rg" --template-file "./main.bicep"
+az deployment sub create --name "NickSandboxDeployment" --resource-group "Nick-sandbox-rg" --template-file "./main.bicep" --parameters resourceGroupLocation="westus"
 
 <!-- Subscription deploy -->
 <!--    Deploy everything at once -->
@@ -23,4 +23,4 @@ az deployment group create --name "NickFunctionAppDeployment" --resource-group N
 
 ## Teardown
 <!-- Delete everything -->
-az group delete --name "Nick-OOA-rg"
+az group delete --name "Nick-sandbox-rg"

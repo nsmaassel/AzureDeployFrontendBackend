@@ -1,5 +1,8 @@
+// References:
+// Automating function app deployment: https://docs.microsoft.com/en-us/azure/azure-functions/functions-infrastructure-as-code?tabs=linux#customizing-a-deployment
+
 @description('The name of the function app that you wish to create.')
-param appName string = 'ooa-api-${uniqueString(resourceGroup().id)}'
+param appName string = 'armDemo-api-${uniqueString(resourceGroup().id)}'
 
 @description('Storage Account type')
 param storageAccountType string = 'Standard_LRS'
